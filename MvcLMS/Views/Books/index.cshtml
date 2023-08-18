@@ -1,0 +1,15 @@
+@model IEnumerable<MvcLMS.Models.Book>
+
+@{
+    ViewData["Title"] = "book Page";
+}
+
+<p>
+    @foreach (Book book in Model)
+    {
+        <p>@book.BookTitle</p>
+        <p>@book.Genre</p>
+        <p>@book.Author</p>
+    }
+
+</p>

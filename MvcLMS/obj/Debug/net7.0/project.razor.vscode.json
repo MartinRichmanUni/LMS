@@ -24060,6 +24060,11 @@
       "FilePath": "e:\\Users\\Marty\\Music\\Library_Management_System\\LMS\\MvcLMS\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Users\\Marty\\Music\\Library_Management_System\\LMS\\MvcLMS\\Views\\Books\\index.cshtml",
+      "TargetPath": "Views\\Books\\index.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }

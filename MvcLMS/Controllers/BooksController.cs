@@ -1,20 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MvcLMS.Context;
+using MvcLMS.Models;
 using System.Text.Encodings.Web;
 
 namespace MvcLMS.Controllers;
 
 public class BooksController : Controller
 {
-    // 
-    // GET: 
-    public string Index()
+    private readonly AppDbContext _context;
+
+    public BooksController(AppDbContext context)
     {
-        return "This is my default action...";
+        _context = context;
     }
-    // 
-    // GET: 
-    public string Welcome()
+
+    public async Task<IActionResult> Index()
     {
-        return "This is the Welcome action method...";
+        var _Book = await _context.Books.ToListAsync();
+        return View(_Book);
     }
+
 }
