@@ -1,9 +1,22 @@
+using MvcLMS.Context;
+using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddCors();
+var connectionString = builder.Configuration.GetConnectionString("Default");
+
+//Service for Database Connection
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
