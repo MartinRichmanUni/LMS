@@ -1,15 +1,29 @@
 @model IEnumerable<MvcLMS.Models.Book>
 
 @{
-    ViewData["Title"] = "book Page";
+    ViewData["Title"] = "Book Page";
 }
 
-<p>
-    @foreach (Book book in Model)
-    {
-        <p>@book.BookTitle</p>
-        <p>@book.Genre</p>
-        <p>@book.Author</p>
-    }
-
-</p>
+<table class="table">
+    <tr>
+        <th> Book ID </th>
+        <th> Book Title </th>
+        <th> Genre </th>
+        <th> Author </th>
+        <th> Borrowed? </th>
+    </tr>
+    
+       @foreach (Book book in Model)
+        {
+            <tr>
+            <td>@book.BookID</td>
+            <td>@book.BookTitle</td>
+            <td>@book.Genre</td>
+            <td>@book.Author</td>
+            <td>@book.Borrowed</td>
+            <td>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="AddBook">Add New Books</a>
+            </td>
+            </tr>
+        } 
+</table>

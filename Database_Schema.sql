@@ -1,58 +1,52 @@
 DROP TABLE IF EXISTS `staff`;
 DROP TABLE IF EXISTS `memberships`;
+DROP TABLE IF EXISTS `booksBorrowed`;
 DROP TABLE IF EXISTS `members`;
 DROP TABLE IF EXISTS `books`;
 
-
 CREATE TABLE `staff` (
-`staff_ID` SMALLINT NOT NULL AUTO_INCREMENT,
-`staff_fname` VARCHAR(35) NOT NULL,
-`staff_lname` VARCHAR(35),
-`staff_email` VARCHAR(255) NOT NULL,
-`staff_password` VARCHAR(255) NOT NULL,
-PRIMARY KEY (`staff_ID`)
+`StaffID` SMALLINT NOT NULL AUTO_INCREMENT,
+`StaffFName` VARCHAR(35) NOT NULL,
+`StaffLName` VARCHAR(35),
+`StaffEmail` VARCHAR(255) NOT NULL,
+`StaffPassword` VARCHAR(255) NOT NULL,
+PRIMARY KEY (`StaffID`)
 );
 
 CREATE TABLE `members` (
-`member_ID` SMALLINT NOT NULL AUTO_INCREMENT,
-`member_fname` VARCHAR(35) NOT NULL,
-`member_lname` VARCHAR(35) NOT NULL,
-`member_email` VARCHAR(255) NOT NULL,
-`member_password` VARCHAR(255) NOT NULL,
-`address_number` TINYINT NOT NULL,
-`address_name` VARCHAR(100),
-`address_streetName` VARCHAR(100) NOT NULL,
-`city` VARCHAR(50) NOT NULL,
-`post_code` CHAR(8) NOT NULL,
-PRIMARY KEY (`member_ID`)
+`MemberID` SMALLINT NOT NULL AUTO_INCREMENT,
+`MemberFName` VARCHAR(35) NOT NULL,
+`MemberLName` VARCHAR(35) NOT NULL,
+`MemberEmail` VARCHAR(255) NOT NULL,
+`MemberPassword` VARCHAR(255) NOT NULL,
+`AddressNumber` TINYINT NOT NULL,
+`AddressName` VARCHAR(100),
+`AddressStreetName` VARCHAR(100) NOT NULL,
+`City` VARCHAR(50) NOT NULL,
+`PostCode` CHAR(8) NOT NULL,
+PRIMARY KEY (`MemberID`)
 );
 
 CREATE TABLE `memberships` (
-membership_ID SMALLINT NOT NULL AUTO_INCREMENT,
-`start_date` DATE NOT NULL,
-`end_date` DATE NOT NULL,
-`member_ID` SMALLINT NOT NULL,
-PRIMARY KEY (`membership_ID`),
-FOREIGN KEY (`member_ID`) REFERENCES `members`(`member_ID`)
+`MembershipID` SMALLINT NOT NULL AUTO_INCREMENT,
+`StartDate` DATE NOT NULL,
+`EndDate` DATE NOT NULL,
+`MemberID` SMALLINT NOT NULL,
+PRIMARY KEY (`MembershipID`),
+FOREIGN KEY (`MemberID`) REFERENCES `members`(`MemberID`)
 );
 
 CREATE TABLE `books` (
-`book_ID` INT NOT NULL AUTO_INCREMENT,
-`book_title` VARCHAR(100) NOT NULL,
-`book_genre` VARCHAR(35) NOT NULL,
-`book_author` VARCHAR(100) NOT NULL,
-`book_borrowed` BOOLEAN NOT NULL DEFAULT 0,
-PRIMARY KEY (`book_ID`)
+`BookID` INT NOT NULL AUTO_INCREMENT,
+`BookTitle` VARCHAR(100) NOT NULL,
+`Genre` VARCHAR(35) NOT NULL,
+`Author` VARCHAR(100) NOT NULL,
+`Borrowed` BOOLEAN NOT NULL DEFAULT 0,
+PRIMARY KEY (`BookID`)
 );
 
-CREATE TABLE `booksBorrowed` (
-`borrowed_ID` SMALLINT NOT NULL AUTO_INCREMENT,
-`borrowed_date` DATE NOT NULL,
-`due_date` DATE NOT NULL,
-`returned_date` DATE,
-`member_ID` SMALLINT NOT NULL,
-`book_ID` INT NOT NULL,
-PRIMARY KEY (`borrowed_ID`),
-FOREIGN KEY (`member_ID`) REFERENCES `member`(`member_ID`),
-FOREIGN KEY (`book_ID`) REFERENCES `books`(`book_ID`)
-);
+SELECT * FROM books;
+
+INSERT INTO books(BookTitle, Genre, Author, Borrowed)
+VALUES ("Percy Jackson", "Science Fiction", "A man", 1);
+

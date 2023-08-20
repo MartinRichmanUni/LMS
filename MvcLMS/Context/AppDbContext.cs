@@ -11,8 +11,8 @@ namespace MvcLMS.Context
 
         }
 
-        // Code  first approach
-        // Add DB tables here
+        // List of DB tables for use
         public DbSet<Book> Books { get; set; }
+        public DbSet<Member> Members { get; set; }
     }
 }
