@@ -1,0 +1,19 @@
+@model MvcLMS.Models.Member
+
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<title> This is the Login Page </title>
+
+<form method="post" asp-controller="Members" asp-action="Login">
+    <div>
+        <label asp-for="MemberEmail"></label> <br />
+        <input type="email" asp-for="MemberEmail" />
+    </div>
+    
+    <div>
+        <label asp-for="MemberPassword"></label> <br />
+        <input type="password" asp-for="MemberPassword" />
+    </div>
+</form>
