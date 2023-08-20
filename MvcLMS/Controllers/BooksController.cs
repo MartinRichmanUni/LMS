@@ -28,6 +28,23 @@ public class BooksController : Controller
         return View();
     }
 
+    public async Task<IActionResult> DeleteBook(int? id)
+    {
+         if (id == null)
+    {
+        return NotFound();
+    }
+
+    var book = await _context.Books.FirstOrDefaultAsync(b => b.BookID == id);
+    if (book == null)
+    {
+        return NotFound();
+    }
+    _context.Books.Remove(book);
+    await _context.SaveChangesAsync();
+    return RedirectToAction("Index");
+    }
+
     // POST: Add Book
     [HttpPost]
     public async Task<IActionResult> NewBook([Bind("BookTitle,Genre, Author, Borrowed")] Book book)

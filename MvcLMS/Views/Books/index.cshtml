@@ -16,14 +16,15 @@
        @foreach (Book book in Model)
         {
             <tr>
-            <td>@book.BookID</td>
-            <td>@book.BookTitle</td>
-            <td>@book.Genre</td>
-            <td>@book.Author</td>
-            <td>@book.Borrowed</td>
-            <td>
-                <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="AddBook">Add New Books</a>
-            </td>
+                <td>@book.BookID</td>
+                <td>@book.BookTitle</td>
+                <td>@book.Genre</td>
+                <td>@book.Author</td>
+                <td>@book.Borrowed</td>
+                <td>
+                    <a asp-action="DeleteBook" asp-route-id="@book.BookID"> Delete </a>
+                </td>
             </tr>
         } 
 </table>
+<a asp-area="" asp-controller="Books" asp-action="AddBook">Add New Book</a>
